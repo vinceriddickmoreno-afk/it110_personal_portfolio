@@ -19,27 +19,34 @@ function applyTheme(theme) {
   themeToggle.textContent = theme === "dark" ? "☀️ Light" : "🌙 Dark";
 }
 
-// 3. Highlight Active Nav Link on Scroll
-const navLinks = document.querySelectorAll(".nav-link");
-const sections = document.querySelectorAll(".page-section");
+// 3. Interactive Parallax on Hero Portrait & Code Card
+const heroVisual = document.querySelector(".hero-visual");
+if (heroVisual) {
+  const dotGrid = heroVisual.querySelector(".dot-grid");
+  const portraitOrb = heroVisual.querySelector(".portrait-orb");
+  const portraitCutout = heroVisual.querySelector(".portrait-cutout");
+  const codeCard = heroVisual.querySelector(".floating-code-card");
 
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute("id");
-        navLinks.forEach((link) => {
-          link.classList.toggle("active", link.dataset.section === id);
-        });
-      }
+  heroVisual.addEventListener("mousemove", (e) => {
+    if (window.innerWidth <= 620) return;
+    const rect = heroVisual.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    if (dotGrid) dotGrid.style.transform = `translate(${x * -16}px, ${y * -16}px)`;
+    if (portraitOrb) portraitOrb.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+    if (portraitCutout) portraitCutout.style.transform = `translate(${x * 18}px, ${y * 8}px)`;
+    if (codeCard) codeCard.style.transform = `translate(${x * -22}px, ${y * -14}px)`;
+  });
+
+  heroVisual.addEventListener("mouseleave", () => {
+    [dotGrid, portraitOrb, portraitCutout, codeCard].forEach((el) => {
+      if (el) el.style.transform = "";
     });
-  },
-  { threshold: 0.55 }
-);
+  });
+}
 
-sections.forEach((sec) => sectionObserver.observe(sec));
-
-// 4. Skills Progress Bars (3x3 Grid)
+// 4. Skills Progress Bars (3x3 Grid with Scroll-Triggered Bar & Counter Animation)
 const skills = [
   { badge: "HT", name: "HTML5 & Semantic Web", pct: 95 },
   { badge: "OO", name: "Backend & OOP (CSC 104)", pct: 90 },
@@ -64,16 +71,87 @@ skills.forEach((s) => {
         <span class="skill-badge">${s.badge}</span>
         <span>${s.name}</span>
       </span>
-      <span class="skill-pct">${s.pct}%</span>
+      <span class="skill-pct" data-target="${s.pct}">0%</span>
     </div>
     <div class="progress-track">
-      <div class="progress-fill" style="width: ${s.pct}%"></div>
+      <div class="progress-fill" data-target="${s.pct}" style="width: 0%"></div>
     </div>
   `;
   skillsGrid.appendChild(el);
 });
 
-// 5. Featured GitHub Projects (Paginated 3 per view + Modal)
+let skillTimers = [];
+
+function animateSkills(show) {
+  skillTimers.forEach((id) => cancelAnimationFrame(id));
+  skillTimers = [];
+
+  const fills = document.querySelectorAll(".progress-fill");
+  const counters = document.querySelectorAll(".skill-pct");
+
+  if (!show) {
+    fills.forEach((bar) => (bar.style.width = "0%"));
+    counters.forEach((c) => (c.textContent = "0%"));
+    return;
+  }
+
+  fills.forEach((bar, idx) => {
+    setTimeout(() => {
+      bar.style.width = `${bar.dataset.target}%`;
+    }, idx * 55);
+  });
+
+  counters.forEach((counter, idx) => {
+    const target = parseInt(counter.dataset.target, 10);
+    const duration = 1100;
+    const delay = idx * 55;
+    let startTime = null;
+
+    function tick(now) {
+      if (!startTime) startTime = now + delay;
+      const elapsed = now - startTime;
+      if (elapsed < 0) {
+        skillTimers.push(requestAnimationFrame(tick));
+        return;
+      }
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = `${Math.round(eased * target)}%`;
+      if (progress < 1) {
+        skillTimers.push(requestAnimationFrame(tick));
+      }
+    }
+
+    skillTimers.push(requestAnimationFrame(tick));
+  });
+}
+
+// 5. Section Scroll Reveal, Active Nav Link & Skill Trigger
+const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll(".page-section");
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute("id");
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.dataset.section === id);
+        });
+        if (id === "skills") animateSkills(true);
+      } else if (id === "skills") {
+        animateSkills(false);
+      }
+    });
+  },
+  { threshold: 0.35 }
+);
+
+sections.forEach((sec) => sectionObserver.observe(sec));
+
+// 6. Featured GitHub Projects (Paginated 3 per view + 3D Tilt Hover + Modal)
 const projects = [
   {
     num: "01",
@@ -182,6 +260,18 @@ function renderProjects() {
         <button type="button" class="project-link-btn">View Project <span>→</span></button>
       </div>
     `;
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(800px) rotateY(${x * 7}deg) rotateX(${y * -7}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+
     card.querySelector(".project-link-btn").addEventListener("click", () => openProjectModal(proj));
     projectsGrid.appendChild(card);
   });
@@ -226,7 +316,7 @@ document.getElementById("close-project-modal").addEventListener("click", () => {
   projectModal.classList.add("hidden");
 });
 
-// 6. Curriculum Progress Lists
+// 7. Curriculum Progress Lists
 const passedCourses = [
   "CSC 102 — Discrete Structures I",
   "ITE 10 — Introduction to Computing",
@@ -281,7 +371,7 @@ document.getElementById("close-curriculum-modal").addEventListener("click", () =
   curriculumModal.classList.add("hidden");
 });
 
-// 7. Reserved Resume Slot Modal
+// 8. Reserved Resume Slot Modal
 const resumeModal = document.getElementById("resume-modal");
 ["hero-resume-btn", "bottom-resume-btn", "social-resume-btn"].forEach((id) => {
   document.getElementById(id).addEventListener("click", () => {
@@ -295,7 +385,7 @@ document.getElementById("print-resume-btn").addEventListener("click", () => {
   window.print();
 });
 
-// 8. Click-to-Copy Email
+// 9. Click-to-Copy Email
 const copyEmailBtn = document.getElementById("copy-email-btn");
 const copyBtnLabel = document.getElementById("copy-btn-label");
 
