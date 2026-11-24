@@ -1,11 +1,11 @@
-// 1. Dynamic Footer Year
+// 1. Dynamic Year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// 2. Light / Dark Theme Toggle
+// 2. Light / Dark Mode Toggle (Defaults to Dark to match reference)
 const themeToggle = document.getElementById("theme-toggle");
 const root = document.documentElement;
 
-const savedTheme = localStorage.getItem("portfolio-theme") || "light";
+const savedTheme = localStorage.getItem("portfolio-theme") || "dark";
 applyTheme(savedTheme);
 
 themeToggle.addEventListener("click", () => {
@@ -19,87 +19,176 @@ function applyTheme(theme) {
   themeToggle.textContent = theme === "dark" ? "☀️ Light" : "🌙 Dark";
 }
 
-// 3. Real GitHub Repositories & Projects
+// 3. Skills Progress Bars (3x3 Grid)
+const skills = [
+  { badge: "HT", name: "HTML5 & Semantic Web", pct: 95 },
+  { badge: "OO", name: "Backend & OOP (CSC 104)", pct: 90 },
+  { badge: "NW", name: "Cisco Networking (IT 104/105)", pct: 92 },
+
+  { badge: "CS", name: "CSS3 & Responsive UI", pct: 90 },
+  { badge: "DB", name: "DBMS & SQL (ITE 16 / IT 108)", pct: 88 },
+  { badge: "AI", name: "DeepSeek AI & CSC 126 Vision", pct: 86 },
+
+  { badge: "JS", name: "JavaScript (ES6+)", pct: 88 },
+  { badge: "SI", name: "Systems Integration (IT 109)", pct: 85 },
+  { badge: "GT", name: "Git, GitHub & Vercel", pct: 90 },
+];
+
+const skillsGrid = document.getElementById("skills-grid");
+skills.forEach((s) => {
+  const el = document.createElement("div");
+  el.className = "skill-item";
+  el.innerHTML = `
+    <div class="skill-top">
+      <span class="skill-name-wrap">
+        <span class="skill-badge">${s.badge}</span>
+        <span>${s.name}</span>
+      </span>
+      <span class="skill-pct">${s.pct}%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" style="width: ${s.pct}%"></div>
+    </div>
+  `;
+  skillsGrid.appendChild(el);
+});
+
+// 4. Featured GitHub Projects (Paginated 3 per view + Modal)
 const projects = [
   {
-    title: "CSC126-Lost-and-Found (Capstone R&D)",
-    type: "AI & Visual Computing • Future Capstone",
+    num: "01",
+    title: "CSC126-Lost-and-Found",
+    type: "DeepSeek AI + CSC 126 • Capstone R&D",
     summary:
-      "Campus Lost & Found system integrating a deconstructed DeepSeek AI model for automated object identification (CSC 126).",
+      "AI-powered campus lost & found system deconstructing DeepSeek AI for automated visual object identification.",
     description:
-      "Flagship project under active R&D for my future BSIT Capstone. Combines Graphics and Visual Computing (CSC 126) with a deconstructed DeepSeek AI pipeline to identify, classify, and match lost and found items automatically.",
-    tags: ["DeepSeek AI", "CSC 126 Visual Computing", "Full-Stack", "Backend"],
+      "My flagship repository being developed toward my future BSIT Capstone at Caraga State University. Combines Graphics and Visual Computing (CSC 126) with a deconstructed DeepSeek AI pipeline to identify and match lost and found items automatically.",
+    tags: ["DeepSeek AI", "CSC 126 Visual Computing", "Backend", "Full-Stack"],
+    gradient: "linear-gradient(135deg, #312e81 0%, #6d28d9 100%)",
+    mockText: "> deepseek.detect(item_img)\n✓ Object: Campus ID / Laptop [98.4%]",
     repoUrl: "https://github.com/vinceriddickmoreno-afk/CSC126-Lost-and-Found",
   },
   {
-    title: "Agrifishery Customer Feedback System",
+    num: "02",
+    title: "Agrifishery Feedback System",
     type: "Full-Stack Management System",
     summary:
-      "Customer feedback and satisfaction analytics platform inspired by my 2023 BSAF background at Caraga State University.",
+      "Customer feedback and satisfaction analytics platform inspired by my 2023 BSAF foundation at CSU.",
     description:
-      "Bridges agricultural/fishery domain insights with structured information management (ITE 16) and software engineering (CSC 106) to collect, track, and analyze stakeholder satisfaction metrics.",
+      "Bridges my 2023 BS in Agroforestry background with Information Management (ITE 16) and Software Engineering (CSC 106) to collect, track, and analyze stakeholder satisfaction records.",
     tags: ["Information Management", "Software Eng.", "Database"],
+    gradient: "linear-gradient(135deg, #065f46 0%, #0284c7 100%)",
+    mockText: "SELECT AVG(rating) FROM feedback;\n> Satisfaction Index: 96.2%",
     repoUrl: "https://github.com/vinceriddickmoreno-afk/AgrifisheryCustomerFeedbackAndSatisfactionManagementSystem",
   },
   {
+    num: "03",
     title: "SecureBank",
     type: "Backend & Information Assurance",
     summary:
-      "Core banking transaction system emphasizing data integrity, validation, and security fundamentals.",
+      "Core banking transaction system emphasizing data integrity, validation, and security principles.",
     description:
-      "Explores secure backend architecture, account transaction workflows, and defensive programming aligned with Information Assurance and Security (IT 107) and Object-Oriented Programming (CSC 104).",
+      "Explores secure backend architecture, account transaction workflows, and defensive validation aligned with Information Assurance & Security (IT 107) and Object-Oriented Programming (CSC 104).",
     tags: ["Backend", "IT 107 Security", "OOP", "DBMS"],
+    gradient: "linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%)",
+    mockText: "POST /api/v1/transfer [200 OK]\n✓ Ledger Checksum Verified",
     repoUrl: "https://github.com/vinceriddickmoreno-afk/securebank",
   },
   {
-    title: "IT109 Systems Integration Skeleton",
-    type: "Systems Architecture (IT 109)",
+    num: "04",
+    title: "IT109 Systems Skeleton",
+    type: "Systems Integration & Architecture 1",
     summary:
-      "Modular integration starter architecture built for Systems Integration and Architecture 1.",
+      "Modular baseline repository built for Systems Integration and Architecture 1 (IT 109).",
     description:
-      "Structured baseline repository demonstrating clean separation of concerns, API readiness, and component integration for IT 109 coursework.",
+      "Structured starter architecture demonstrating clean separation of concerns, API integration readiness, and maintainable component boundaries.",
     tags: ["IT 109", "Integrative Programming", "Architecture"],
+    gradient: "linear-gradient(135deg, #3730a3 0%, #0ea5e9 100%)",
+    mockText: "module.exports = { gateway, service };\n✓ Integration Layer Ready",
     repoUrl: "https://github.com/vinceriddickmoreno-afk/it109-skeleton",
   },
   {
+    num: "05",
     title: "RPG Games Engine",
-    type: "OOP & Algorithms (CSC 104 / ITE 14)",
+    type: "OOP & Data Structures (CSC 104 / ITE 14)",
     summary:
-      "Turn-based RPG mechanics implementing character classes, state management, and game loops.",
+      "Turn-based RPG mechanics implementing character classes, state loops, and inventory structures.",
     description:
-      "Built to reinforce Object-Oriented Programming (CSC 104) and Data Structures & Algorithms (ITE 14) through modular combat logic and inventory structures.",
-    tags: ["OOP", "Data Structures", "Game Logic"],
+      "Built to reinforce Object-Oriented Programming (CSC 104) and Data Structures & Algorithms (ITE 14) through modular combat logic and state management.",
+    tags: ["OOP", "Data Structures", "Algorithms"],
+    gradient: "linear-gradient(135deg, #4c1d95 0%, #be185d 100%)",
+    mockText: "class Hero extends Entity {\n  castSkill(target) { ... }\n}",
     repoUrl: "https://github.com/vinceriddickmoreno-afk/rpggames",
   },
   {
+    num: "06",
     title: "IT110 Personal Portfolio",
     type: "Web Systems & Technologies (IT 110)",
     summary:
       "Responsive, SEO-indexed personal portfolio deployed via GitHub and Vercel.",
     description:
-      "Built with semantic HTML5, modern CSS Grid, and vanilla JavaScript with structured JSON-LD metadata for Google Search discoverability.",
+      "Built with semantic HTML5, modern CSS Grid, and vanilla JavaScript with structured JSON-LD metadata and Google Search Console indexing.",
     tags: ["HTML5", "CSS3", "JavaScript", "Vercel"],
+    gradient: "linear-gradient(135deg, #1e293b 0%, #4f46e5 100%)",
+    mockText: "git push origin main\n✓ Deployed to Vercel Edge",
     repoUrl: "https://github.com/vinceriddickmoreno-afk/it110_personal_portfolio",
   },
 ];
 
-const projectsContainer = document.getElementById("projects-container");
+let projectPage = 0;
+const perPage = 3;
+const totalPages = Math.ceil(projects.length / perPage);
+
+const projectsGrid = document.getElementById("projects-grid");
+const dotsContainer = document.getElementById("carousel-dots");
 const projectModal = document.getElementById("project-modal");
 
-projects.forEach((proj) => {
-  const card = document.createElement("button");
-  card.className = "project-card";
-  card.innerHTML = `
-    <div>
-      <h3>${proj.title}</h3>
-      <p>${proj.summary}</p>
-    </div>
-    <div class="tags">
-      ${proj.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
-    </div>
-  `;
-  card.addEventListener("click", () => openProjectModal(proj));
-  projectsContainer.appendChild(card);
+function renderProjects() {
+  projectsGrid.innerHTML = "";
+  const start = projectPage * perPage;
+  const slice = projects.slice(start, start + perPage);
+
+  slice.forEach((proj) => {
+    const card = document.createElement("article");
+    card.className = "project-card";
+    card.innerHTML = `
+      <div class="project-preview" style="background: ${proj.gradient};">
+        <span class="project-num">${proj.num}</span>
+        <pre class="project-mock-ui">${proj.mockText}</pre>
+      </div>
+      <div class="project-body">
+        <h3>${proj.title}</h3>
+        <p>${proj.summary}</p>
+        <button type="button" class="project-link-btn">View Project <span>→</span></button>
+      </div>
+    `;
+    card.querySelector(".project-link-btn").addEventListener("click", () => openProjectModal(proj));
+    projectsGrid.appendChild(card);
+  });
+
+  dotsContainer.innerHTML = "";
+  for (let i = 0; i < totalPages; i++) {
+    const dot = document.createElement("button");
+    dot.className = `dot-btn ${i === projectPage ? "active" : ""}`;
+    dot.setAttribute("aria-label", `Project page ${i + 1}`);
+    dot.addEventListener("click", () => {
+      projectPage = i;
+      renderProjects();
+    });
+    dotsContainer.appendChild(dot);
+  }
+}
+
+renderProjects();
+
+document.getElementById("prev-projects").addEventListener("click", () => {
+  projectPage = (projectPage - 1 + totalPages) % totalPages;
+  renderProjects();
+});
+
+document.getElementById("next-projects").addEventListener("click", () => {
+  projectPage = (projectPage + 1) % totalPages;
+  renderProjects();
 });
 
 function openProjectModal(proj) {
@@ -107,7 +196,7 @@ function openProjectModal(proj) {
   document.getElementById("modal-proj-title").textContent = proj.title;
   document.getElementById("modal-proj-desc").textContent = proj.description;
   document.getElementById("modal-proj-tags").innerHTML = proj.tags
-    .map((t) => `<span class="tag">${t}</span>`)
+    .map((t) => `<span class="modal-tag">${t}</span>`)
     .join("");
   document.getElementById("modal-proj-repo").href = proj.repoUrl;
   projectModal.classList.remove("hidden");
@@ -117,45 +206,7 @@ document.getElementById("close-project-modal").addEventListener("click", () => {
   projectModal.classList.add("hidden");
 });
 
-// 4. Engineering Focus Carousel
-const focusItems = [
-  {
-    text: "Currently deconstructing DeepSeek AI to understand model inference and feature extraction—applying CSC 126 Visual Computing concepts so my Lost & Found system can automatically identify uploaded objects.",
-    title: "DeepSeek AI & Visual Computing (CSC 126)",
-    tag: "Future BSIT Capstone R&D",
-  },
-  {
-    text: "Backed by completed coursework in Networking 1 & 2 (IT 104, IT 105) and a Cisco Networking Certificate, I design backend services with clear awareness of network protocols, latency, and security.",
-    title: "Networking & Backend Infrastructure",
-    tag: "Cisco Certified • IT 104 & IT 105",
-  },
-  {
-    text: "Combining Relational & Advanced DBMS (ITE 16, IT 108) with Systems Integration (IT 109) and Web Systems (IT 110) to build reliable end-to-end applications.",
-    title: "Full-Stack & Database Architecture",
-    tag: "Caraga State University — 3rd Year BSIT",
-  },
-];
-
-let focusIndex = 0;
-function renderFocus() {
-  const item = focusItems[focusIndex];
-  document.getElementById("focus-text").textContent = item.text;
-  document.getElementById("focus-title").textContent = item.title;
-  document.getElementById("focus-tag").textContent = item.tag;
-}
-renderFocus();
-
-document.getElementById("prev-focus").addEventListener("click", () => {
-  focusIndex = (focusIndex - 1 + focusItems.length) % focusItems.length;
-  renderFocus();
-});
-
-document.getElementById("next-focus").addEventListener("click", () => {
-  focusIndex = (focusIndex + 1) % focusItems.length;
-  renderFocus();
-});
-
-// 5. Curriculum Progress Data (Passed & Currently Enrolled)
+// 5. Curriculum Progress Lists
 const passedCourses = [
   "CSC 102 — Discrete Structures I",
   "ITE 10 — Introduction to Computing",
@@ -201,35 +252,21 @@ enrolledCourses.forEach((c) => {
 });
 
 const curriculumModal = document.getElementById("curriculum-modal");
-document.getElementById("curriculum-btn").addEventListener("click", () => {
-  curriculumModal.classList.remove("hidden");
+["nav-curriculum-btn", "about-curriculum-btn", "social-curriculum-btn"].forEach((id) => {
+  document.getElementById(id).addEventListener("click", () => {
+    curriculumModal.classList.remove("hidden");
+  });
 });
 document.getElementById("close-curriculum-modal").addEventListener("click", () => {
   curriculumModal.classList.add("hidden");
 });
 
-// 6. Click-to-Copy Email
-const copyBtn = document.getElementById("copy-email-btn");
-const copyHint = document.getElementById("copy-hint");
-
-copyBtn.addEventListener("click", async () => {
-  const email = copyBtn.getAttribute("data-email");
-  try {
-    await navigator.clipboard.writeText(email);
-    copyHint.textContent = "Copied to clipboard!";
-    setTimeout(() => (copyHint.textContent = "Click to copy"), 2000);
-  } catch {
-    copyHint.textContent = email;
-  }
-});
-
-// 7. Reserved Resume Modal & Print
+// 6. Reserved Resume Slot Modal
 const resumeModal = document.getElementById("resume-modal");
-document.getElementById("resume-btn").addEventListener("click", () => {
-  resumeModal.classList.remove("hidden");
-});
-document.getElementById("open-resume-tile").addEventListener("click", () => {
-  resumeModal.classList.remove("hidden");
+["hero-resume-btn", "bottom-resume-btn", "social-resume-btn"].forEach((id) => {
+  document.getElementById(id).addEventListener("click", () => {
+    resumeModal.classList.remove("hidden");
+  });
 });
 document.getElementById("close-resume-modal").addEventListener("click", () => {
   resumeModal.classList.add("hidden");
@@ -238,7 +275,22 @@ document.getElementById("print-resume-btn").addEventListener("click", () => {
   window.print();
 });
 
-// Close any modal on backdrop click
+// 7. Click-to-Copy Email
+const copyEmailBtn = document.getElementById("copy-email-btn");
+const copyBtnLabel = document.getElementById("copy-btn-label");
+
+copyEmailBtn.addEventListener("click", async () => {
+  const email = copyEmailBtn.getAttribute("data-email");
+  try {
+    await navigator.clipboard.writeText(email);
+    copyBtnLabel.textContent = "Copied!";
+    setTimeout(() => (copyBtnLabel.textContent = "Copy Email"), 2000);
+  } catch {
+    copyBtnLabel.textContent = email;
+  }
+});
+
+// Close modals on backdrop click
 [projectModal, curriculumModal, resumeModal].forEach((modal) => {
   modal.addEventListener("click", (e) => {
     if (e.target === modal) modal.classList.add("hidden");
