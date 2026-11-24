@@ -19,47 +19,67 @@ function applyTheme(theme) {
   themeToggle.textContent = theme === "dark" ? "☀️ Light" : "🌙 Dark";
 }
 
-// 3. Projects Data & Interactive Modal
+// 3. Real GitHub Repositories & Projects
 const projects = [
   {
-    title: "TaskFlow Kanban App",
-    type: "Full-Stack Web App",
-    summary: "Drag-and-drop project board with real-time status filters and local persistence.",
+    title: "CSC126-Lost-and-Found (Capstone R&D)",
+    type: "AI & Visual Computing • Future Capstone",
+    summary:
+      "Campus Lost & Found system integrating a deconstructed DeepSeek AI model for automated object identification (CSC 126).",
     description:
-      "Built a minimalist productivity board designed for student teams. Features task prioritization, instant search, and responsive mobile layouts.",
-    tags: ["JavaScript", "CSS Grid", "REST API"],
-    liveUrl: "https://your-portfolio.vercel.app/",
-    repoUrl: "https://github.com/yourusername/taskflow",
+      "Flagship project under active R&D for my future BSIT Capstone. Combines Graphics and Visual Computing (CSC 126) with a deconstructed DeepSeek AI pipeline to identify, classify, and match lost and found items automatically.",
+    tags: ["DeepSeek AI", "CSC 126 Visual Computing", "Full-Stack", "Backend"],
+    repoUrl: "https://github.com/vinceriddickmoreno-afk/CSC126-Lost-and-Found",
   },
   {
-    title: "Campus Event Portal",
-    type: "Frontend + Database",
-    summary: "Centralized directory for university org events with QR check-in support.",
+    title: "Agrifishery Customer Feedback System",
+    type: "Full-Stack Management System",
+    summary:
+      "Customer feedback and satisfaction analytics platform inspired by my 2023 BSAF background at Caraga State University.",
     description:
-      "Streamlined event registration for 400+ students with automated schedule filtering and admin attendance exports.",
-    tags: ["HTML5", "Node.js", "PostgreSQL"],
-    liveUrl: "https://your-portfolio.vercel.app/",
-    repoUrl: "https://github.com/yourusername/campus-events",
+      "Bridges agricultural/fishery domain insights with structured information management (ITE 16) and software engineering (CSC 106) to collect, track, and analyze stakeholder satisfaction metrics.",
+    tags: ["Information Management", "Software Eng.", "Database"],
+    repoUrl: "https://github.com/vinceriddickmoreno-afk/AgrifisheryCustomerFeedbackAndSatisfactionManagementSystem",
   },
   {
-    title: "Expense Tracker Dashboard",
-    type: "Web Utility",
-    summary: "Clean personal finance tracker with category breakdowns and CSV export.",
+    title: "SecureBank",
+    type: "Backend & Information Assurance",
+    summary:
+      "Core banking transaction system emphasizing data integrity, validation, and security fundamentals.",
     description:
-      "Helps users monitor monthly budgets with instant calculations, visual progress bars, and zero-login local storage.",
-    tags: ["JavaScript", "Charts", "Vercel"],
-    liveUrl: "https://your-portfolio.vercel.app/",
-    repoUrl: "https://github.com/yourusername/expense-tracker",
+      "Explores secure backend architecture, account transaction workflows, and defensive programming aligned with Information Assurance and Security (IT 107) and Object-Oriented Programming (CSC 104).",
+    tags: ["Backend", "IT 107 Security", "OOP", "DBMS"],
+    repoUrl: "https://github.com/vinceriddickmoreno-afk/securebank",
   },
   {
-    title: "Developer Link Hub",
-    type: "Open Source Template",
-    summary: "Fast, SEO-friendly link-in-bio page scoring 100/100 on Lighthouse.",
+    title: "IT109 Systems Integration Skeleton",
+    type: "Systems Architecture (IT 109)",
+    summary:
+      "Modular integration starter architecture built for Systems Integration and Architecture 1.",
     description:
-      "Created a lightweight static template optimized for fast load times, accessibility, and clean social previews.",
-    tags: ["HTML5", "CSS3", "SEO"],
-    liveUrl: "https://your-portfolio.vercel.app/",
-    repoUrl: "https://github.com/yourusername/link-hub",
+      "Structured baseline repository demonstrating clean separation of concerns, API readiness, and component integration for IT 109 coursework.",
+    tags: ["IT 109", "Integrative Programming", "Architecture"],
+    repoUrl: "https://github.com/vinceriddickmoreno-afk/it109-skeleton",
+  },
+  {
+    title: "RPG Games Engine",
+    type: "OOP & Algorithms (CSC 104 / ITE 14)",
+    summary:
+      "Turn-based RPG mechanics implementing character classes, state management, and game loops.",
+    description:
+      "Built to reinforce Object-Oriented Programming (CSC 104) and Data Structures & Algorithms (ITE 14) through modular combat logic and inventory structures.",
+    tags: ["OOP", "Data Structures", "Game Logic"],
+    repoUrl: "https://github.com/vinceriddickmoreno-afk/rpggames",
+  },
+  {
+    title: "IT110 Personal Portfolio",
+    type: "Web Systems & Technologies (IT 110)",
+    summary:
+      "Responsive, SEO-indexed personal portfolio deployed via GitHub and Vercel.",
+    description:
+      "Built with semantic HTML5, modern CSS Grid, and vanilla JavaScript with structured JSON-LD metadata for Google Search discoverability.",
+    tags: ["HTML5", "CSS3", "JavaScript", "Vercel"],
+    repoUrl: "https://github.com/vinceriddickmoreno-afk/it110_personal_portfolio",
   },
 ];
 
@@ -70,8 +90,10 @@ projects.forEach((proj) => {
   const card = document.createElement("button");
   card.className = "project-card";
   card.innerHTML = `
-    <h3>${proj.title}</h3>
-    <p>${proj.summary}</p>
+    <div>
+      <h3>${proj.title}</h3>
+      <p>${proj.summary}</p>
+    </div>
     <div class="tags">
       ${proj.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
     </div>
@@ -87,7 +109,6 @@ function openProjectModal(proj) {
   document.getElementById("modal-proj-tags").innerHTML = proj.tags
     .map((t) => `<span class="tag">${t}</span>`)
     .join("");
-  document.getElementById("modal-proj-live").href = proj.liveUrl;
   document.getElementById("modal-proj-repo").href = proj.repoUrl;
   projectModal.classList.remove("hidden");
 }
@@ -96,40 +117,98 @@ document.getElementById("close-project-modal").addEventListener("click", () => {
   projectModal.classList.add("hidden");
 });
 
-// 4. Recommendations Carousel
-const recommendations = [
+// 4. Engineering Focus Carousel
+const focusItems = [
   {
-    text: "“Consistently delivers clean, well-structured code ahead of deadlines. Great eye for UI details and very easy to collaborate with.”",
-    name: "Prof. Maria Santos",
-    role: "Capstone Adviser, Computer Science Department",
+    text: "Currently deconstructing DeepSeek AI to understand model inference and feature extraction—applying CSC 126 Visual Computing concepts so my Lost & Found system can automatically identify uploaded objects.",
+    title: "DeepSeek AI & Visual Computing (CSC 126)",
+    tag: "Future BSIT Capstone R&D",
   },
   {
-    text: "“Quick learner who takes initiative. Turned our rough wireframes into a fast, mobile-ready web app in less than two weeks.”",
-    name: "Mark Reyes",
-    role: "Lead Developer, Tech Studio Inc.",
+    text: "Backed by completed coursework in Networking 1 & 2 (IT 104, IT 105) and a Cisco Networking Certificate, I design backend services with clear awareness of network protocols, latency, and security.",
+    title: "Networking & Backend Infrastructure",
+    tag: "Cisco Certified • IT 104 & IT 105",
+  },
+  {
+    text: "Combining Relational & Advanced DBMS (ITE 16, IT 108) with Systems Integration (IT 109) and Web Systems (IT 110) to build reliable end-to-end applications.",
+    title: "Full-Stack & Database Architecture",
+    tag: "Caraga State University — 3rd Year BSIT",
   },
 ];
 
-let recIndex = 0;
-function renderRecommendation() {
-  const rec = recommendations[recIndex];
-  document.getElementById("rec-text").textContent = rec.text;
-  document.getElementById("rec-name").textContent = rec.name;
-  document.getElementById("rec-role").textContent = rec.role;
+let focusIndex = 0;
+function renderFocus() {
+  const item = focusItems[focusIndex];
+  document.getElementById("focus-text").textContent = item.text;
+  document.getElementById("focus-title").textContent = item.title;
+  document.getElementById("focus-tag").textContent = item.tag;
 }
-renderRecommendation();
+renderFocus();
 
-document.getElementById("prev-rec").addEventListener("click", () => {
-  recIndex = (recIndex - 1 + recommendations.length) % recommendations.length;
-  renderRecommendation();
+document.getElementById("prev-focus").addEventListener("click", () => {
+  focusIndex = (focusIndex - 1 + focusItems.length) % focusItems.length;
+  renderFocus();
 });
 
-document.getElementById("next-rec").addEventListener("click", () => {
-  recIndex = (recIndex + 1) % recommendations.length;
-  renderRecommendation();
+document.getElementById("next-focus").addEventListener("click", () => {
+  focusIndex = (focusIndex + 1) % focusItems.length;
+  renderFocus();
 });
 
-// 5. Click-to-Copy Email
+// 5. Curriculum Progress Data (Passed & Currently Enrolled)
+const passedCourses = [
+  "CSC 102 — Discrete Structures I",
+  "ITE 10 — Introduction to Computing",
+  "ITE 11 — Mathematical Applications for ITE",
+  "ITE 12 — Fundamentals of Programming",
+  "ITE 13 — Intermediate Programming",
+  "ITE 14 — Data Structures and Algorithms",
+  "ITE 15 — Social & Professional Issues",
+  "ITE 16 — Information Management",
+  "CSC 104 — Object-Oriented Programming",
+  "CSC 106 — Software Engineering 1",
+  "IT 104 — Networking 1",
+  "IT 105 — Networking 2",
+  "IT 106 — Integrative Programming & Tech 1",
+  "IS 105 — Organization & Management Concepts",
+  "IS 106 — Quantitative Methods",
+];
+
+const enrolledCourses = [
+  "CSC 126 — Graphics and Visual Computing",
+  "IT 107 — Information Assurance and Security 1",
+  "IT 108 — Advanced Database Management Systems",
+  "IT 109 — Systems Integration and Architecture 1",
+  "IT 110 — Web Systems and Technologies",
+  "ITE 18 — Applications Dev & Emerging Tech",
+  "LIE — Living in the IT Era",
+  "LWR — Life and Works of Rizal",
+  "SE 105 — Career Readiness 1",
+];
+
+const passedList = document.getElementById("passed-courses");
+passedCourses.forEach((c) => {
+  const li = document.createElement("li");
+  li.textContent = c;
+  passedList.appendChild(li);
+});
+
+const enrolledList = document.getElementById("enrolled-courses");
+enrolledCourses.forEach((c) => {
+  const li = document.createElement("li");
+  li.textContent = c;
+  enrolledList.appendChild(li);
+});
+
+const curriculumModal = document.getElementById("curriculum-modal");
+document.getElementById("curriculum-btn").addEventListener("click", () => {
+  curriculumModal.classList.remove("hidden");
+});
+document.getElementById("close-curriculum-modal").addEventListener("click", () => {
+  curriculumModal.classList.add("hidden");
+});
+
+// 6. Click-to-Copy Email
 const copyBtn = document.getElementById("copy-email-btn");
 const copyHint = document.getElementById("copy-hint");
 
@@ -144,7 +223,7 @@ copyBtn.addEventListener("click", async () => {
   }
 });
 
-// 6. Resume Modal & Print
+// 7. Reserved Resume Modal & Print
 const resumeModal = document.getElementById("resume-modal");
 document.getElementById("resume-btn").addEventListener("click", () => {
   resumeModal.classList.remove("hidden");
@@ -159,8 +238,8 @@ document.getElementById("print-resume-btn").addEventListener("click", () => {
   window.print();
 });
 
-// Close modals on backdrop click
-[projectModal, resumeModal].forEach((modal) => {
+// Close any modal on backdrop click
+[projectModal, curriculumModal, resumeModal].forEach((modal) => {
   modal.addEventListener("click", (e) => {
     if (e.target === modal) modal.classList.add("hidden");
   });

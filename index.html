@@ -3,36 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- Primary SEO Meta Tags -->
-  <title>Your Name — Software Developer & Portfolio</title>
-  <meta name="title" content="Your Name — Software Developer & Portfolio" />
-  <meta name="description" content="Personal portfolio of Your Name, a Full-Stack Web Developer specializing in modern JavaScript, responsive web apps, and scalable systems." />
-  <meta name="keywords" content="Your Name, Web Developer, Software Engineer, Portfolio, Frontend, Backend, Philippines" />
-  <meta name="author" content="Your Name" />
+  <title>Vince Riddick F. Moreno — BSIT Developer, Networking &amp; AI R&amp;D Portfolio</title>
+  <meta name="title" content="Vince Riddick F. Moreno — BSIT Developer, Networking &amp; AI R&amp;D Portfolio" />
+  <meta name="description" content="Personal portfolio of Vince Riddick F. Moreno, 3rd Year BSIT student at Caraga State University specializing in Networking, Backend &amp; Full-Stack Development, and DeepSeek AI object identification." />
+  <meta name="keywords" content="Vince Riddick F. Moreno, Vince Moreno, Caraga State University, BSIT Portfolio, Backend Developer, Networking, DeepSeek AI, CSC 126, Lost and Found Capstone, Butuan City" />
+  <meta name="author" content="Vince Riddick F. Moreno" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://your-portfolio.vercel.app/" />
+  <link rel="canonical" href="https://it110-personal-portfolio.vercel.app/" />
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://your-portfolio.vercel.app/" />
-  <meta property="og:title" content="Your Name — Software Developer Portfolio" />
-  <meta property="og:description" content="Explore projects, experience, and technical skills of Your Name." />
-
-  <!-- Google Search Console Verification (Replace content value in Step 3) -->
-  <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" /> -->
+  <meta property="og:url" content="https://it110-personal-portfolio.vercel.app/" />
+  <meta property="og:title" content="Vince Riddick F. Moreno — BSIT Developer Portfolio" />
+  <meta property="og:description" content="Explore projects, Cisco certification, Caraga State University IT curriculum milestones, and DeepSeek AI Lost &amp; Found R&amp;D." />
 
   <!-- Structured Data for Google Search (JSON-LD) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Your Name",
-      "url": "https://your-portfolio.vercel.app/",
-      "jobTitle": "Full-Stack Web Developer",
+      "name": "Vince Riddick F. Moreno",
+      "url": "https://it110-personal-portfolio.vercel.app/",
+      "jobTitle": "3rd Year BSIT Student & Full-Stack / Backend Developer",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Caraga State University"
+      },
       "sameAs": [
-        "https://github.com/yourusername",
-        "https://linkedin.com/in/yourusername"
+        "https://github.com/vinceriddickmoreno-afk"
       ]
     }
   </script>
@@ -47,21 +47,30 @@
     <!-- Top Header / Profile Hero -->
     <header class="card hero-card">
       <div class="hero-left">
-        <div class="avatar" aria-label="Profile initials">YN</div>
+        <div class="avatar-wrapper">
+          <img
+            src="profile.jpg"
+            alt="Vince Riddick F. Moreno"
+            class="avatar-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+          />
+          <div class="avatar-fallback" aria-label="Profile initials">VM</div>
+        </div>
         <div class="hero-info">
           <div class="name-row">
-            <h1 id="profile-name">Your Name</h1>
-            <span class="verified-badge" title="Verified Developer">✓</span>
-            <span class="status-pill"><span class="dot"></span> Open to Work</span>
+            <h1 id="profile-name">Vince Riddick F. Moreno</h1>
+            <span class="verified-badge" title="Caraga State University — BSIT">✓</span>
+            <span class="status-pill"><span class="dot"></span> 3rd Year BSIT • Open to R&amp;D</span>
           </div>
-          <p class="role" id="profile-role">Full-Stack Web Developer &amp; UI Builder</p>
-          <p class="location" id="profile-location">📍 Cagayan de Oro, Philippines</p>
+          <p class="role" id="profile-role">Backend, Networking &amp; Full-Stack Developer</p>
+          <p class="location" id="profile-location">📍 Caraga State University • Butuan City, Philippines</p>
         </div>
       </div>
 
       <div class="hero-actions">
         <button id="theme-toggle" class="btn btn-secondary" aria-label="Toggle dark mode">🌙 Dark</button>
-        <button id="resume-btn" class="btn btn-primary">View Resume</button>
+        <button id="curriculum-btn" class="btn btn-secondary">Curriculum</button>
+        <button id="resume-btn" class="btn btn-primary">Resume (Soon)</button>
       </div>
     </header>
 
@@ -69,28 +78,30 @@
     <main class="bento-grid">
       <!-- About -->
       <section class="card span-7">
-        <h2>About</h2>
+        <h2>About Me</h2>
         <p class="muted-text">
-          I build fast, accessible, and maintainable web applications. Focused on clean architecture, responsive interfaces, and turning complex requirements into practical products that users actually enjoy using.
+          I am a <strong>3rd-year Bachelor of Science in Information Technology (BSIT)</strong> student at <strong>Caraga State University</strong> with a strong focus on <strong>Networking, Backend Systems, and Full-Stack Development</strong>. I began my university journey in 2023 in BS in Agroforestry (BSAF) before shifting to IT—a transition that gave me both domain problem-solving perspective and a deep drive for software engineering.
         </p>
         <p class="muted-text" style="margin-top: 10px;">
-          Currently focused on modern JavaScript, backend APIs, and cloud deployments on Vercel and GitHub.
+          Currently, I am <strong>making and deconstructing a DeepSeek AI model</strong> to implement automated <strong>visual object identification</strong> (applying <strong>CSC 126: Graphics and Visual Computing</strong>) inside my <em>Lost and Found</em> repository, which I am scaling toward my future BSIT Capstone Project.
         </p>
       </section>
 
-      <!-- Experience Timeline -->
+      <!-- Academic & Project Journey Timeline -->
       <section class="card span-5 row-span-2">
-        <h2>Experience</h2>
+        <h2>Academic &amp; R&amp;D Journey</h2>
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot active"></div>
             <div class="timeline-content">
               <div class="timeline-header">
-                <strong>Software Engineering Intern</strong>
-                <span class="year">2026</span>
+                <strong>3rd Year BSIT &amp; DeepSeek AI R&amp;D</strong>
+                <span class="year">2026 • Current</span>
               </div>
-              <p class="org">Tech Studio Inc.</p>
-              <p class="small-text">Built reusable UI components and improved page load speed by 35%.</p>
+              <p class="org">Caraga State University</p>
+              <p class="small-text">
+                Deconstructing DeepSeek AI for object recognition in <code>CSC126-Lost-and-Found</code>. Currently taking Web Systems (IT 110), Systems Integration (IT 109), Advanced DBMS (IT 108), Info Assurance (IT 107), App Dev (ITE 18), and Graphics &amp; Visual Computing (CSC 126).
+              </p>
             </div>
           </div>
 
@@ -98,11 +109,13 @@
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <div class="timeline-header">
-                <strong>Freelance Web Developer</strong>
-                <span class="year">2025</span>
+                <strong>Core IT, Networking &amp; Backend Track</strong>
+                <span class="year">2024 – 2025</span>
               </div>
-              <p class="org">Self-Employed</p>
-              <p class="small-text">Delivered responsive business sites and booking dashboards for local clients.</p>
+              <p class="org">Caraga State University — Shifted to BSIT</p>
+              <p class="small-text">
+                Completed Networking 1 &amp; 2 (IT 104, IT 105), OOP (CSC 104), Data Structures &amp; Algorithms (ITE 14), Software Engineering 1 (CSC 106), Information Management (ITE 16), and Integrative Programming (IT 106).
+              </p>
             </div>
           </div>
 
@@ -110,131 +123,146 @@
             <div class="timeline-dot"></div>
             <div class="timeline-content">
               <div class="timeline-header">
-                <strong>BS Information Technology / CS</strong>
-                <span class="year">2023 – Present</span>
+                <strong>BS in Agroforestry (BSAF)</strong>
+                <span class="year">2023</span>
               </div>
-              <p class="org">Your University</p>
-              <p class="small-text">Dean's Lister. Focused on Web Systems, Databases, and Software Engineering.</p>
+              <p class="org">Caraga State University</p>
+              <p class="small-text">
+                Started higher education in Agroforestry before shifting to BSIT—inspiring domain-driven builds like my Agrifishery Customer Feedback &amp; Satisfaction Management System.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Tech Stack -->
+      <!-- Tech Stack & Curriculum Core Tools -->
       <section class="card span-7">
         <div class="card-header">
-          <h2>Tech Stack</h2>
-          <span class="badge-subtle">Core Tools</span>
+          <h2>Tech Stack &amp; Core Competencies</h2>
+          <span class="badge-subtle">Curriculum + R&amp;D</span>
         </div>
+
         <div class="stack-group">
-          <span class="stack-label">Frontend</span>
+          <span class="stack-label">Backend &amp; Software Engineering</span>
+          <div class="tags">
+            <span class="tag">Object-Oriented Programming</span>
+            <span class="tag">Data Structures &amp; Algorithms</span>
+            <span class="tag">REST APIs &amp; Integrative Prog.</span>
+            <span class="tag">Systems Architecture</span>
+            <span class="tag">Info Assurance &amp; Security</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <span class="stack-label">Full-Stack Web &amp; Databases</span>
           <div class="tags">
             <span class="tag">HTML5</span>
             <span class="tag">CSS3</span>
             <span class="tag">JavaScript (ES6+)</span>
-            <span class="tag">React</span>
-            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Relational &amp; Advanced DBMS</span>
+            <span class="tag">SQL</span>
           </div>
         </div>
+
         <div class="stack-group">
-          <span class="stack-label">Backend &amp; Tools</span>
+          <span class="stack-label">Networking, AI &amp; DevOps</span>
           <div class="tags">
-            <span class="tag">Node.js</span>
-            <span class="tag">Express</span>
-            <span class="tag">PostgreSQL</span>
+            <span class="tag">Cisco Networking (IT 104/105)</span>
+            <span class="tag">DeepSeek AI Deconstruction</span>
+            <span class="tag">Visual Computing (CSC 126)</span>
             <span class="tag">Git &amp; GitHub</span>
             <span class="tag">Vercel</span>
           </div>
         </div>
       </section>
 
-      <!-- Recent Projects -->
+      <!-- GitHub Repositories & Projects -->
       <section class="card span-8">
         <div class="card-header">
-          <h2>Recent Projects</h2>
-          <span class="small-text">Click a project for details</span>
+          <h2>GitHub Repositories &amp; Projects</h2>
+          <span class="small-text">Click any project for technical details</span>
         </div>
         <div class="projects-grid" id="projects-container">
           <!-- Populated by script.js -->
         </div>
       </section>
 
-      <!-- Certifications & Beyond Coding -->
+      <!-- Certifications & Capstone Spotlight -->
       <section class="card span-4">
         <h2>Certifications</h2>
         <ul class="clean-list">
           <li>
-            <strong>Responsive Web Design</strong>
-            <span>freeCodeCamp • 2025</span>
+            <strong>Cisco Networking Certificate</strong>
+            <span>Cisco Networking Academy • Verified</span>
           </li>
           <li>
-            <strong>JavaScript Algorithms &amp; Data Structures</strong>
-            <span>freeCodeCamp • 2025</span>
+            <strong>BSIT Core Curriculum Standing</strong>
+            <span>Caraga State University • 3rd Year</span>
           </li>
           <li>
-            <strong>Git &amp; GitHub Foundations</strong>
-            <span>GitHub • 2026</span>
+            <strong>Resume / Curriculum Vitae</strong>
+            <span>In Progress on Canva • To Be Followed</span>
           </li>
         </ul>
 
-        <h2 style="margin-top: 24px;">Beyond Coding</h2>
+        <h2 style="margin-top: 22px;">Capstone Vision (CSC 126)</h2>
         <p class="small-text">
-          When I'm away from the keyboard, I explore UI design systems, write technical notes, and contribute to student developer communities.
+          Engineering an intelligent campus Lost &amp; Found platform by deconstructing <strong>DeepSeek AI</strong> for visual object detection and matching—turning <code>CSC126-Lost-and-Found</code> into a production-ready capstone system.
         </p>
       </section>
 
-      <!-- Recommendations -->
+      <!-- Technical Focus & Highlights Carousel -->
       <section class="card span-6">
         <div class="card-header">
-          <h2>Recommendations</h2>
+          <h2>Engineering Focus</h2>
           <div class="carousel-controls">
-            <button id="prev-rec" class="icon-btn" aria-label="Previous recommendation">←</button>
-            <button id="next-rec" class="icon-btn" aria-label="Next recommendation">→</button>
+            <button id="prev-focus" class="icon-btn" aria-label="Previous focus">←</button>
+            <button id="next-focus" class="icon-btn" aria-label="Next focus">→</button>
           </div>
         </div>
-        <blockquote class="rec-quote" id="rec-text"></blockquote>
+        <blockquote class="rec-quote" id="focus-text"></blockquote>
         <div class="rec-author">
-          <strong id="rec-name"></strong>
-          <span id="rec-role" class="small-text"></span>
+          <strong id="focus-title"></strong>
+          <span id="focus-tag" class="small-text"></span>
         </div>
       </section>
 
-      <!-- Contact & Socials -->
+      <!-- Contact & Saved Resume Slot -->
       <section class="card span-6">
-        <h2>Let's Work Together</h2>
+        <h2>Connect &amp; Credentials</h2>
         <p class="muted-text" style="margin-bottom: 16px;">
-          Open to internships, freelance work, and full-time junior developer roles.
+          Available for academic collaboration, backend/networking projects, and internship opportunities.
         </p>
         <div class="contact-grid">
-          <button id="copy-email-btn" class="contact-tile" data-email="youremail@example.com">
+          <button id="copy-email-btn" class="contact-tile" data-email="vinceriddickmoreno@gmail.com">
             <span class="tile-label">Email</span>
-            <strong class="tile-value">youremail@example.com</strong>
+            <strong class="tile-value">vinceriddickmoreno@gmail.com</strong>
             <span class="tile-hint" id="copy-hint">Click to copy</span>
           </button>
 
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="contact-tile">
+          <a href="https://github.com/vinceriddickmoreno-afk" target="_blank" rel="noopener noreferrer" class="contact-tile">
             <span class="tile-label">GitHub</span>
-            <strong class="tile-value">@yourusername</strong>
-            <span class="tile-hint">View repositories ↗</span>
+            <strong class="tile-value">@vinceriddickmoreno-afk</strong>
+            <span class="tile-hint">Explore repositories ↗</span>
           </a>
 
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="contact-tile">
-            <span class="tile-label">LinkedIn</span>
-            <strong class="tile-value">in/yourusername</strong>
-            <span class="tile-hint">Connect ↗</span>
+          <a href="https://github.com/vinceriddickmoreno-afk/CSC126-Lost-and-Found" target="_blank" rel="noopener noreferrer" class="contact-tile">
+            <span class="tile-label">Capstone R&amp;D</span>
+            <strong class="tile-value">CSC126-Lost-and-Found</strong>
+            <span class="tile-hint">DeepSeek AI + Visual Computing ↗</span>
           </a>
 
-          <button id="open-resume-tile" class="contact-tile">
-            <span class="tile-label">Resume / CV</span>
-            <strong class="tile-value">Printable PDF</strong>
-            <span class="tile-hint">Open preview</span>
+          <button id="open-resume-tile" class="contact-tile resume-slot">
+            <span class="tile-label">Resume / CV (Reserved Slot)</span>
+            <strong class="tile-value">To Be Followed</strong>
+            <span class="tile-hint">Designing on Canva • Click for status</span>
           </button>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>© <span id="year"></span> Your Name. Deployed on Vercel.</p>
+      <p>© <span id="year"></span> Vince Riddick F. Moreno • Caraga State University • Deployed on Vercel</p>
     </footer>
   </div>
 
@@ -247,32 +275,61 @@
       <p id="modal-proj-desc" class="muted-text" style="margin: 12px 0;"></p>
       <div id="modal-proj-tags" class="tags" style="margin-bottom: 20px;"></div>
       <div class="modal-actions">
-        <a id="modal-proj-live" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo ↗</a>
-        <a id="modal-proj-repo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Repo</a>
+        <a id="modal-proj-repo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View on GitHub ↗</a>
       </div>
     </div>
   </div>
 
-  <!-- Printable Resume Modal -->
+  <!-- Curriculum Modal (Passed & Currently Enrolled) -->
+  <div id="curriculum-modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content modal-lg">
+      <div class="card-header">
+        <h2>BSIT Curriculum Progress — Caraga State University</h2>
+        <button class="modal-close-inline" id="close-curriculum-modal" aria-label="Close">&times;</button>
+      </div>
+      <div class="curriculum-columns">
+        <div>
+          <span class="stack-label" style="color: #16a34a;">● Passed Core &amp; Foundation Courses</span>
+          <ul class="course-list" id="passed-courses"></ul>
+        </div>
+        <div>
+          <span class="stack-label" style="color: #2563eb;">● Currently Enrolled (3rd Year)</span>
+          <ul class="course-list" id="enrolled-courses"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reserved Resume Slot Modal -->
   <div id="resume-modal" class="modal hidden" role="dialog" aria-modal="true">
     <div class="modal-content modal-lg">
       <div class="card-header">
-        <h2>Resume Preview</h2>
+        <h2>Resume / Curriculum Vitae</h2>
         <div>
-          <button id="print-resume-btn" class="btn btn-primary">Print / Save PDF</button>
-          <button class="modal-close-inline" id="close-resume-modal">&times;</button>
+          <button id="print-resume-btn" class="btn btn-secondary">Print Summary</button>
+          <button class="modal-close-inline" id="close-resume-modal" aria-label="Close">&times;</button>
         </div>
       </div>
       <div class="resume-sheet">
-        <h3>Your Name</h3>
-        <p class="small-text">Full-Stack Web Developer • Cagayan de Oro, PH • youremail@example.com • github.com/yourusername</p>
+        <div class="reserved-banner">
+          <strong>Status: To Be Followed</strong> — Formal visual Resume / CV is currently being finalized on <strong>Canva</strong> and will be linked here soon.
+        </div>
+        <h3>Vince Riddick F. Moreno</h3>
+        <p class="small-text">3rd Year BSIT Student • Caraga State University • Butuan City, Philippines • vinceriddickmoreno@gmail.com</p>
         <hr />
-        <h4>Summary</h4>
-        <p class="small-text">Detail-oriented web developer focused on clean, responsive interfaces and reliable full-stack applications using HTML, CSS, JavaScript, React, and Node.js.</p>
-        <h4>Experience</h4>
-        <p class="small-text"><strong>Software Engineering Intern — Tech Studio Inc. (2026)</strong><br />Developed modular UI components and optimized web vitals across client portals.</p>
+        <h4>Focus Areas</h4>
+        <p class="small-text">Networking (Cisco Certified), Backend Architecture, Full-Stack Web Systems, and DeepSeek AI Object Identification (CSC 126).</p>
         <h4>Education</h4>
-        <p class="small-text"><strong>BS Information Technology / Computer Science — Your University</strong></p>
+        <p class="small-text">
+          <strong>Bachelor of Science in Information Technology (BSIT)</strong> — Caraga State University (3rd Year, Ongoing)<br />
+          <em>Previously: BS in Agroforestry (BSAF), Caraga State University (2023)</em>
+        </p>
+        <h4>Key Repositories</h4>
+        <p class="small-text">
+          • <strong>CSC126-Lost-and-Found:</strong> AI-assisted campus lost &amp; found system with DeepSeek AI object identification.<br />
+          • <strong>AgrifisheryCustomerFeedbackAndSatisfactionManagementSystem:</strong> Full-stack feedback &amp; analytics platform.<br />
+          • <strong>securebank:</strong> Secure transaction &amp; database integrity system.
+        </p>
       </div>
     </div>
   </div>
