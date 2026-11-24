@@ -11,11 +11,11 @@
   <meta name="keywords" content="Vince Riddick F. Moreno, Vince Moreno, Caraga State University, BSIT Portfolio, Backend Developer, Cisco Networking, DeepSeek AI, CSC 126, Lost and Found Capstone" />
   <meta name="author" content="Vince Riddick F. Moreno" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://it110-personal-portfolio.vercel.app/" />
+  <link rel="canonical" href="https://vinceriddickmoreno.vercel.app/" />
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://it110-personal-portfolio.vercel.app/" />
+  <meta property="og:url" content="https://vinceriddickmoreno.vercel.app/" />
   <meta property="og:title" content="Vince Riddick F. Moreno — BSIT Developer Portfolio" />
   <meta property="og:description" content="Explore projects, Cisco certification, Caraga State University IT curriculum milestones, and DeepSeek AI Lost &amp; Found R&amp;D." />
 
@@ -25,7 +25,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Vince Riddick F. Moreno",
-      "url": "https://it110-personal-portfolio.vercel.app/",
+      "url": "https://vinceriddickmoreno.vercel.app/",
       "jobTitle": "3rd Year BSIT Student & Full-Stack / Backend Developer",
       "affiliation": {
         "@type": "CollegeOrUniversity",
@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Top Navigation Bar -->
+  <!-- Sticky Top Navigation Bar -->
   <header class="navbar">
     <div class="container nav-inner">
       <a href="#home" class="brand">
@@ -52,12 +52,12 @@
       </a>
 
       <nav class="nav-links" aria-label="Primary Navigation">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
+        <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#about" class="nav-link" data-section="about">About</a>
+        <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+        <a href="#projects" class="nav-link" data-section="projects">Projects</a>
         <button type="button" class="nav-link-btn" id="nav-curriculum-btn">Curriculum</button>
-        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
       </nav>
 
       <div class="nav-actions">
@@ -72,8 +72,8 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
+    <!-- PAGE 1: Hero Section -->
+    <section id="home" class="page-section hero-section">
       <div class="container hero-grid">
         <!-- Left Content -->
         <div class="hero-content">
@@ -102,27 +102,25 @@
               <span class="tech-icon-box css" title="CSS3">CSS</span>
               <span class="tech-icon-box js" title="JavaScript">JS</span>
               <span class="tech-icon-box net" title="Cisco Networking">NET</span>
-              <span class="tech-icon-box db" title="DBMS & SQL">SQL</span>
-              <span class="tech-icon-box ai" title="DeepSeek AI & CSC 126">AI</span>
-              <span class="tech-icon-box git" title="Git & GitHub">GIT</span>
+              <span class="tech-icon-box db" title="DBMS &amp; SQL">SQL</span>
+              <span class="tech-icon-box ai" title="DeepSeek AI &amp; CSC 126">AI</span>
+              <span class="tech-icon-box git" title="Git &amp; GitHub">GIT</span>
             </div>
           </div>
         </div>
 
-        <!-- Right Portrait & Floating Code Card -->
+        <!-- Right Cutout Portrait & Non-Overlapping Code Card -->
         <div class="hero-visual">
           <div class="dot-grid" aria-hidden="true"></div>
           <div class="portrait-glow" aria-hidden="true"></div>
+          <div class="portrait-orb" aria-hidden="true"></div>
 
-          <div class="portrait-circle">
-            <img
-              src="profile.jpg"
-              alt="Vince Riddick F. Moreno"
-              class="portrait-img"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
-            />
-            <div class="portrait-fallback">VM</div>
-          </div>
+          <img
+            src="profile.png"
+            alt="Vince Riddick F. Moreno"
+            class="portrait-cutout"
+            onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='profile.jpg';}else{this.style.display='none';}"
+          />
 
           <!-- Decorative Curved Arrow -->
           <svg class="hero-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
@@ -130,25 +128,25 @@
             <path d="M33 17 L 43 15 L 42 25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
 
-          <!-- Floating Code Window -->
+          <!-- Floating Code Window (Positioned clear of face/torso) -->
           <div class="floating-code-card" aria-label="Developer profile snippet">
             <div class="code-header">
               <span>&lt;/&gt; Code</span>
               <span class="live-dot"></span>
             </div>
             <pre class="code-body"><code><span class="kw">const</span> <span class="var">developer</span> = {
-  <span class="prop">name</span>: <span class="str">"Vince Riddick Moreno"</span>,
+  <span class="prop">name</span>: <span class="str">"Vince Moreno"</span>,
   <span class="prop">school</span>: <span class="str">"Caraga State Univ."</span>,
-  <span class="prop">focus</span>: [<span class="str">"Backend"</span>, <span class="str">"Network"</span>, <span class="str">"AI"</span>],
-  <span class="prop">capstone</span>: <span class="str">"DeepSeek + CSC126"</span>
+  <span class="prop">focus</span>: [<span class="str">"Backend"</span>, <span class="str">"Net"</span>, <span class="str">"AI"</span>],
+  <span class="prop">capstone</span>: <span class="str">"DeepSeek+CSC126"</span>
 };</code></pre>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Me & 2x2 Stats Grid -->
-    <section id="about" class="section">
+    <!-- PAGE 2: About Me & 2x2 Stats Grid -->
+    <section id="about" class="page-section section-alt">
       <div class="container about-grid">
         <div class="about-text">
           <span class="eyebrow-pill">ABOUT ME</span>
@@ -205,8 +203,8 @@
       </div>
     </section>
 
-    <!-- Skills Section (3-Column Progress Bars) -->
-    <section id="skills" class="section section-alt">
+    <!-- PAGE 3: Skills Section -->
+    <section id="skills" class="page-section">
       <div class="container">
         <div class="section-center-header">
           <span class="eyebrow-pill">MY SKILLS</span>
@@ -219,8 +217,8 @@
       </div>
     </section>
 
-    <!-- Featured Projects Section -->
-    <section id="projects" class="section">
+    <!-- PAGE 4: Featured Projects Section -->
+    <section id="projects" class="page-section section-alt">
       <div class="container">
         <div class="section-center-header">
           <span class="eyebrow-pill">FEATURED PROJECTS</span>
@@ -231,7 +229,7 @@
           <!-- Populated by script.js -->
         </div>
 
-        <!-- Carousel Dots & Filter Controls -->
+        <!-- Carousel Dots & Controls -->
         <div class="projects-controls">
           <button type="button" id="prev-projects" class="page-arrow" aria-label="Previous projects">←</button>
           <div class="carousel-dots" id="carousel-dots"></div>
@@ -240,87 +238,88 @@
       </div>
     </section>
 
-    <!-- Bottom Callout, Capstone Highlight & Connect Strip -->
-    <section id="contact" class="section section-alt">
-      <div class="container bottom-grid">
-        <!-- Left: Let's Work Together -->
-        <div class="bottom-col">
-          <span class="eyebrow-pill">LET’S WORK TOGETHER</span>
-          <h2 class="bottom-title">Have a project or R&amp;D idea?</h2>
-          <p class="muted-paragraph">
-            Open to backend, networking, and full-stack collaborations, internships, and capstone research discussions.
-          </p>
-          <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-            <button type="button" id="copy-email-btn" class="btn btn-primary" data-email="vinceriddickmoreno@gmail.com">
-              <span id="copy-btn-label">Copy Email</span> ↗
-            </button>
-            <button type="button" id="bottom-resume-btn" class="btn btn-outline">
-              Resume Slot
-            </button>
+    <!-- PAGE 5: Contact, Capstone Spotlight & Footer -->
+    <section id="contact" class="page-section contact-page">
+      <div class="container contact-page-inner">
+        <div class="bottom-grid">
+          <!-- Left: Let's Work Together -->
+          <div class="bottom-col">
+            <span class="eyebrow-pill">LET’S WORK TOGETHER</span>
+            <h2 class="bottom-title">Have a project or R&amp;D idea?</h2>
+            <p class="muted-paragraph">
+              Open to backend, networking, and full-stack collaborations, internships, and capstone research discussions.
+            </p>
+            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+              <button type="button" id="copy-email-btn" class="btn btn-primary" data-email="vinceriddickmoreno@gmail.com">
+                <span id="copy-btn-label">Copy Email</span> ↗
+              </button>
+              <button type="button" id="bottom-resume-btn" class="btn btn-outline">
+                Resume Slot
+              </button>
+            </div>
           </div>
-        </div>
 
-        <!-- Middle: Capstone & Academic Highlight Card -->
-        <div class="quote-card">
-          <div class="quote-mark">“</div>
-          <p class="quote-text">
-            Currently deconstructing DeepSeek AI to understand visual feature extraction and inference—integrating CSC 126 Graphics &amp; Visual Computing into my <code>CSC126-Lost-and-Found</code> repository so campus items can be identified automatically.
-          </p>
-          <div class="quote-author">
-            <img
-              src="profile.jpg"
-              alt="Vince Riddick F. Moreno"
-              class="quote-avatar"
-              onerror="this.style.display='none';"
-            />
-            <div>
-              <strong>Vince Riddick F. Moreno</strong>
-              <span>BSIT 3rd Year • Caraga State University</span>
+          <!-- Middle: Capstone & Academic Highlight Card -->
+          <div class="quote-card">
+            <div class="quote-mark">“</div>
+            <p class="quote-text">
+              Currently deconstructing DeepSeek AI to understand visual feature extraction and inference—integrating CSC 126 Graphics &amp; Visual Computing into my <code>CSC126-Lost-and-Found</code> repository so campus items can be identified automatically.
+            </p>
+            <div class="quote-author">
+              <img
+                src="profile.png"
+                alt="Vince Riddick F. Moreno"
+                class="quote-avatar"
+                onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='profile.jpg';}else{this.style.display='none';}"
+              />
+              <div>
+                <strong>Vince Riddick F. Moreno</strong>
+                <span>BSIT 3rd Year • Caraga State University</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Follow Me & Direct Links -->
+          <div class="bottom-col">
+            <span class="eyebrow-pill">CONNECT &amp; CREDENTIALS</span>
+            <div class="social-circle-row">
+              <a href="https://github.com/vinceriddickmoreno-afk" target="_blank" rel="noopener noreferrer" class="social-circle" title="GitHub Profile" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <button type="button" id="social-curriculum-btn" class="social-circle" title="BSIT Curriculum" aria-label="Curriculum">
+                🎓
+              </button>
+              <button type="button" id="social-resume-btn" class="social-circle" title="Resume (To Be Followed)" aria-label="Resume Slot">
+                📄
+              </button>
+              <a href="mailto:vinceriddickmoreno@gmail.com" class="social-circle" title="Send Email" aria-label="Email">
+                ✉️
+              </a>
+            </div>
+
+            <div class="contact-details-list">
+              <a href="mailto:vinceriddickmoreno@gmail.com" class="contact-line">
+                <span class="accent-text">✉</span> vinceriddickmoreno@gmail.com
+              </a>
+              <div class="contact-line">
+                <span class="accent-text">🎓</span> Cisco Certified • CSU BSIT
+              </div>
+              <div class="contact-line">
+                <span class="accent-text">📄</span> CV: In Progress on Canva
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Right: Follow Me & Direct Links -->
-        <div class="bottom-col">
-          <span class="eyebrow-pill">CONNECT &amp; CREDENTIALS</span>
-          <div class="social-circle-row">
-            <a href="https://github.com/vinceriddickmoreno-afk" target="_blank" rel="noopener noreferrer" class="social-circle" title="GitHub Profile" aria-label="GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            </a>
-            <button type="button" id="social-curriculum-btn" class="social-circle" title="BSIT Curriculum" aria-label="Curriculum">
-              🎓
-            </button>
-            <button type="button" id="social-resume-btn" class="social-circle" title="Resume (To Be Followed)" aria-label="Resume Slot">
-              📄
-            </button>
-            <a href="mailto:vinceriddickmoreno@gmail.com" class="social-circle" title="Send Email" aria-label="Email">
-              ✉️
-            </a>
+        <footer class="footer">
+          <div class="footer-inner">
+            <p>© <span id="year"></span> Vince Riddick F. Moreno. All rights reserved.</p>
+            <p>Caraga State University • Deployed on Vercel</p>
           </div>
-
-          <div class="contact-details-list">
-            <a href="mailto:vinceriddickmoreno@gmail.com" class="contact-line">
-              <span class="accent-text">✉</span> vinceriddickmoreno@gmail.com
-            </a>
-            <div class="contact-line">
-              <span class="accent-text">🎓</span> Cisco Certified • CSU BSIT
-            </div>
-            <div class="contact-line">
-              <span class="accent-text">📄</span> CV: In Progress on Canva
-            </div>
-          </div>
-        </div>
+        </footer>
       </div>
     </section>
   </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Vince Riddick F. Moreno. All rights reserved.</p>
-      <p>Caraga State University • Deployed on Vercel</p>
-    </div>
-  </footer>
 
   <!-- Project Detail Modal -->
   <div id="project-modal" class="modal hidden" role="dialog" aria-modal="true">

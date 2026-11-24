@@ -1,7 +1,7 @@
 // 1. Dynamic Year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// 2. Light / Dark Mode Toggle (Defaults to Dark to match reference)
+// 2. Light / Dark Mode Toggle
 const themeToggle = document.getElementById("theme-toggle");
 const root = document.documentElement;
 
@@ -19,7 +19,27 @@ function applyTheme(theme) {
   themeToggle.textContent = theme === "dark" ? "☀️ Light" : "🌙 Dark";
 }
 
-// 3. Skills Progress Bars (3x3 Grid)
+// 3. Highlight Active Nav Link on Scroll
+const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll(".page-section");
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.dataset.section === id);
+        });
+      }
+    });
+  },
+  { threshold: 0.55 }
+);
+
+sections.forEach((sec) => sectionObserver.observe(sec));
+
+// 4. Skills Progress Bars (3x3 Grid)
 const skills = [
   { badge: "HT", name: "HTML5 & Semantic Web", pct: 95 },
   { badge: "OO", name: "Backend & OOP (CSC 104)", pct: 90 },
@@ -53,7 +73,7 @@ skills.forEach((s) => {
   skillsGrid.appendChild(el);
 });
 
-// 4. Featured GitHub Projects (Paginated 3 per view + Modal)
+// 5. Featured GitHub Projects (Paginated 3 per view + Modal)
 const projects = [
   {
     num: "01",
@@ -206,7 +226,7 @@ document.getElementById("close-project-modal").addEventListener("click", () => {
   projectModal.classList.add("hidden");
 });
 
-// 5. Curriculum Progress Lists
+// 6. Curriculum Progress Lists
 const passedCourses = [
   "CSC 102 — Discrete Structures I",
   "ITE 10 — Introduction to Computing",
@@ -261,7 +281,7 @@ document.getElementById("close-curriculum-modal").addEventListener("click", () =
   curriculumModal.classList.add("hidden");
 });
 
-// 6. Reserved Resume Slot Modal
+// 7. Reserved Resume Slot Modal
 const resumeModal = document.getElementById("resume-modal");
 ["hero-resume-btn", "bottom-resume-btn", "social-resume-btn"].forEach((id) => {
   document.getElementById(id).addEventListener("click", () => {
@@ -275,7 +295,7 @@ document.getElementById("print-resume-btn").addEventListener("click", () => {
   window.print();
 });
 
-// 7. Click-to-Copy Email
+// 8. Click-to-Copy Email
 const copyEmailBtn = document.getElementById("copy-email-btn");
 const copyBtnLabel = document.getElementById("copy-btn-label");
 
