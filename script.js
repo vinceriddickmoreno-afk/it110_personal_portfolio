@@ -19,7 +19,27 @@ function applyTheme(theme) {
   themeToggle.textContent = theme === "dark" ? "☀️ Light" : "🌙 Dark";
 }
 
-// 3. Interactive Parallax on Hero Portrait & Code Card
+// 3. Mobile Hamburger Menu Drawer
+const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+const mobileNav = document.getElementById("mobile-nav");
+
+if (mobileMenuBtn && mobileNav) {
+  mobileMenuBtn.addEventListener("click", () => {
+    const isHidden = mobileNav.classList.toggle("hidden");
+    mobileMenuBtn.setAttribute("aria-expanded", String(!isHidden));
+    mobileMenuBtn.textContent = isHidden ? "☰" : "✕";
+  });
+
+  mobileNav.querySelectorAll("a, button").forEach((item) => {
+    item.addEventListener("click", () => {
+      mobileNav.classList.add("hidden");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      mobileMenuBtn.textContent = "☰";
+    });
+  });
+}
+
+// 4. Desktop-Only Parallax on Hero Portrait & Code Card
 const heroVisual = document.querySelector(".hero-visual");
 if (heroVisual) {
   const dotGrid = heroVisual.querySelector(".dot-grid");
@@ -28,15 +48,15 @@ if (heroVisual) {
   const codeCard = heroVisual.querySelector(".floating-code-card");
 
   heroVisual.addEventListener("mousemove", (e) => {
-    if (window.innerWidth <= 620) return;
+    if (window.innerWidth <= 1024) return;
     const rect = heroVisual.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
 
     if (dotGrid) dotGrid.style.transform = `translate(${x * -16}px, ${y * -16}px)`;
     if (portraitOrb) portraitOrb.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-    if (portraitCutout) portraitCutout.style.transform = `translate(${x * 18}px, ${y * 8}px)`;
-    if (codeCard) codeCard.style.transform = `translate(${x * -22}px, ${y * -14}px)`;
+    if (portraitCutout) portraitCutout.style.transform = `translate(${x * 16}px, ${y * 8}px)`;
+    if (codeCard) codeCard.style.transform = `translate(${x * -20}px, ${y * -12}px)`;
   });
 
   heroVisual.addEventListener("mouseleave", () => {
@@ -46,7 +66,7 @@ if (heroVisual) {
   });
 }
 
-// 4. Skills Progress Bars (3x3 Grid with Scroll-Triggered Bar & Counter Animation)
+// 5. Skills Progress Bars (3x3 Grid with Scroll-Triggered Bar & Counter Animation)
 const skills = [
   { badge: "HT", name: "HTML5 & Semantic Web", pct: 95 },
   { badge: "OO", name: "Backend & OOP (CSC 104)", pct: 90 },
@@ -126,7 +146,7 @@ function animateSkills(show) {
   });
 }
 
-// 5. Section Scroll Reveal, Active Nav Link & Skill Trigger
+// 6. Section Scroll Reveal, Active Nav Link & Skill Trigger
 const navLinks = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll(".page-section");
 
@@ -146,12 +166,12 @@ const sectionObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.35 }
+  { threshold: 0.25 }
 );
 
 sections.forEach((sec) => sectionObserver.observe(sec));
 
-// 6. Featured GitHub Projects (Paginated 3 per view + 3D Tilt Hover + Modal)
+// 7. Featured GitHub Projects (Paginated 3 per view + Desktop 3D Tilt + Modal)
 const projects = [
   {
     num: "01",
@@ -262,6 +282,7 @@ function renderProjects() {
     `;
 
     card.addEventListener("mousemove", (e) => {
+      if (window.innerWidth <= 1024) return;
       const rect = card.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -316,7 +337,7 @@ document.getElementById("close-project-modal").addEventListener("click", () => {
   projectModal.classList.add("hidden");
 });
 
-// 7. Curriculum Progress Lists
+// 8. Curriculum Progress Lists
 const passedCourses = [
   "CSC 102 — Discrete Structures I",
   "ITE 10 — Introduction to Computing",
@@ -362,16 +383,19 @@ enrolledCourses.forEach((c) => {
 });
 
 const curriculumModal = document.getElementById("curriculum-modal");
-["nav-curriculum-btn", "about-curriculum-btn", "social-curriculum-btn"].forEach((id) => {
-  document.getElementById(id).addEventListener("click", () => {
-    curriculumModal.classList.remove("hidden");
-  });
+["nav-curriculum-btn", "mobile-curriculum-btn", "about-curriculum-btn", "social-curriculum-btn"].forEach((id) => {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener("click", () => {
+      curriculumModal.classList.remove("hidden");
+    });
+  }
 });
 document.getElementById("close-curriculum-modal").addEventListener("click", () => {
   curriculumModal.classList.add("hidden");
 });
 
-// 8. Reserved Resume Slot Modal
+// 9. Reserved Resume Slot Modal
 const resumeModal = document.getElementById("resume-modal");
 ["hero-resume-btn", "bottom-resume-btn", "social-resume-btn"].forEach((id) => {
   document.getElementById(id).addEventListener("click", () => {
@@ -385,7 +409,7 @@ document.getElementById("print-resume-btn").addEventListener("click", () => {
   window.print();
 });
 
-// 9. Click-to-Copy Email
+// 10. Click-to-Copy Email
 const copyEmailBtn = document.getElementById("copy-email-btn");
 const copyBtnLabel = document.getElementById("copy-btn-label");
 

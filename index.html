@@ -67,13 +67,32 @@
         <a href="#contact" class="btn btn-primary btn-sm">
           Hire Me <span aria-hidden="true">↗</span>
         </a>
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          class="mobile-menu-btn"
+          aria-label="Open Navigation Menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
       </div>
+    </div>
+
+    <!-- Responsive Mobile Drawer -->
+    <div id="mobile-nav" class="mobile-nav hidden">
+      <a href="#home" class="mobile-nav-link">Home</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#skills" class="mobile-nav-link">Skills</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <button type="button" class="mobile-nav-link mobile-nav-btn" id="mobile-curriculum-btn">Curriculum</button>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
     </div>
   </header>
 
   <main>
     <!-- PAGE 1: Hero Section -->
-    <section id="home" class="page-section hero-section">
+    <section id="home" class="page-section hero-section in-view">
       <div class="container hero-grid">
         <!-- Left Content -->
         <div class="hero-content">
@@ -109,26 +128,28 @@
           </div>
         </div>
 
-        <!-- Right Cutout Portrait & Non-Overlapping Code Card -->
+        <!-- Right Cutout Portrait & Responsive Code Card -->
         <div class="hero-visual">
-          <div class="dot-grid" aria-hidden="true"></div>
-          <div class="portrait-glow" aria-hidden="true"></div>
-          <div class="portrait-orb" aria-hidden="true"></div>
+          <div class="portrait-stage">
+            <div class="dot-grid" aria-hidden="true"></div>
+            <div class="portrait-glow" aria-hidden="true"></div>
+            <div class="portrait-orb" aria-hidden="true"></div>
 
-          <img
-            src="profile.png"
-            alt="Vince Riddick F. Moreno"
-            class="portrait-cutout"
-            onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='profile.jpg';}else{this.style.display='none';}"
-          />
+            <img
+              src="profile.png"
+              alt="Vince Riddick F. Moreno"
+              class="portrait-cutout"
+              onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='profile.jpg';}else{this.style.display='none';}"
+            />
 
-          <!-- Decorative Curved Arrow -->
-          <svg class="hero-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
-            <path d="M72 78 C 28 74, 16 44, 42 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-            <path d="M33 17 L 43 15 L 42 25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+            <!-- Decorative Curved Arrow -->
+            <svg class="hero-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+              <path d="M72 78 C 28 74, 16 44, 42 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              <path d="M33 17 L 43 15 L 42 25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
 
-          <!-- Floating Code Window (Positioned clear of face/torso) -->
+          <!-- Floating Code Window -->
           <div class="floating-code-card" aria-label="Developer profile snippet">
             <div class="code-header">
               <span>&lt;/&gt; Code</span>
@@ -371,7 +392,7 @@
           <span class="eyebrow-pill">RESERVED CREDENTIAL SLOT</span>
           <h2 style="margin-top: 6px; font-size: 1.25rem;">Resume / Curriculum Vitae</h2>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
           <button type="button" id="print-resume-btn" class="btn btn-outline btn-sm">Print Summary</button>
           <button class="modal-close-inline" id="close-resume-modal" aria-label="Close">&times;</button>
         </div>
